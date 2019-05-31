@@ -1,8 +1,9 @@
 #include "DAQVModule.hh"
 
 
-DAQVModule::DAQVModule(){
-  Init();
-  
+DAQVModule::DAQVModule() {
 }
 
+DAQVModule::DAQVModule(const std::string name)
+  : NamedObject(name) , ConfigManager("cfg/"+name+".cfg"){
+}

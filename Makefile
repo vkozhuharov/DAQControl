@@ -11,8 +11,8 @@ LIBS	=	-L. -L./lib
 
 CFLAGS = 	-fPIC -O2 -Wall
 
-SRC 	= 	src/*.cc
-OBJS	=	$(SRC:.cc=.o)
+SRC 	= 	$(wildcard src/*.cc)
+OBJS	=	$(SRC:%.cc=%.o)
 
 INCLUDEDIR =	-I./inc
 INCLUDES =	./inc/*
@@ -22,7 +22,7 @@ all	:	$(EXE)
 clean	:
 		/bin/rm -f $(OBJS)
 
-$(EXE) :	$(OBJS)
+$(EXE) :	$(OBJS) 
 		/bin/rm -f $(EXE)
 		if [ ! -d $(BINDIR) ]; then mkdir -p $(BINDIR); fi
 		$(CC) $(CFLAGS) -o $(EXE) DAQControl.cc $(INCLUDEDIR) $(OBJS)  $(LIBS)

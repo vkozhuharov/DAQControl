@@ -7,9 +7,9 @@
 class NamedObject {
 public:
   NamedObject(){;};
-  NamedObject(std::string name){fName = name;};
+  NamedObject(const std::string name){fName = name;};
   NamedObject(const char *name){fName = name;};
-  ~NamedObject();
+  ~NamedObject(){;};
   
   std::string& GetName(){return fName;};
   void SetName(std::string name){fName = name;};
